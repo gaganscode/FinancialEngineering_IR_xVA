@@ -13,7 +13,10 @@ import numpy as np
 import enum 
 from copy import deepcopy
 import matplotlib.pyplot as plt
+import matplotlib
 from scipy.interpolate import splrep, splev, interp1d
+
+# matplotlib.use("QtAgg")
 
 # This class defines puts and calls
 class OptionTypeSwap(enum.Enum):
@@ -222,6 +225,10 @@ def mainCode():
     plt.plot(t,P0TDiscount(t),'--r')
     plt.plot(t,P0TFrwd(t),'-b')
     plt.legend(['discount','forecast'])
+
+    matplotlib.rcParams['backend'] = 'TkAgg'
+    # plt.plot([1,2,3,4])
+    plt.show()
     
     return 0.0
 
